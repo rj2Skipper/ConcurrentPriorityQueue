@@ -27,7 +27,7 @@ namespace ConcurrentPriorityQueueTests
 			TestHelpers.GetItemsWithIntegerPriority().ForEach(i =>
 			{
 				var result = _targetQueue.Enqueue(i);
-				result.IsSuccess.Should().BeTrue();
+				result.Should().BeTrue();
 			});
 		}
 
@@ -44,7 +44,7 @@ namespace ConcurrentPriorityQueueTests
 			var result = _targetQueue.Enqueue(mockWithPriority);
 
 			// Assert
-			result.IsFailure.Should().BeTrue();
+			result.Should().BeFalse();
 		}
 
 		[Fact]
@@ -58,7 +58,7 @@ namespace ConcurrentPriorityQueueTests
 			var result = _targetQueue.Enqueue(mockWithPriority);
 
 			// Assert
-			result.IsSuccess.Should().BeTrue();
+			result.Should().BeTrue();
 		}
 
 		[Fact]
@@ -74,9 +74,9 @@ namespace ConcurrentPriorityQueueTests
 			var result3 = _targetQueue.Dequeue();
 
 			// Assert
-			result1.Value.Priority.Should().Be(0);
-			result2.Value.Priority.Should().Be(1);
-			result3.Value.Priority.Should().Be(2);
+			result1.Priority.Should().Be(0);
+			result2.Priority.Should().Be(1);
+			result3.Priority.Should().Be(2);
 		}
 
 		[Fact]
@@ -86,7 +86,7 @@ namespace ConcurrentPriorityQueueTests
 			var result = _targetQueue.Dequeue();;
 
 			// Assert
-			result.IsFailure.Should().BeTrue();
+			result.Should().BeNull();
 		}
 
 		[Fact]
@@ -103,8 +103,8 @@ namespace ConcurrentPriorityQueueTests
 			var result2 = _targetQueue.Dequeue();
 
 			// Assert
-			result1.Value.Should().Be(mockWithPriority1);
-			result2.Value.Should().Be(mockWithPriority2);
+			result1.Should().Be(mockWithPriority1);
+			result2.Should().Be(mockWithPriority2);
 		}
 
 		[Fact]
@@ -118,7 +118,7 @@ namespace ConcurrentPriorityQueueTests
 			var result = _targetQueue.Peek();
 
 			// Assert
-			result.Value.Priority.Should().Be(0);
+			result.Priority.Should().Be(0);
 		}
 
 		[Fact]
@@ -128,7 +128,7 @@ namespace ConcurrentPriorityQueueTests
 			var result = _targetQueue.Peek(); ;
 
 			// Assert
-			result.IsFailure.Should().BeTrue();
+			result.Should().BeNull();
 		}
 
 		[Fact]
@@ -145,8 +145,8 @@ namespace ConcurrentPriorityQueueTests
 			var result2 = _targetQueue.Dequeue();
 
 			// Assert
-			result1.Value.Should().Be(mockWithPriority1);
-			result2.Value.Should().Be(mockWithPriority2);
+			result1.Should().Be(mockWithPriority1);
+			result2.Should().Be(mockWithPriority2);
 		}
 	}
 }
