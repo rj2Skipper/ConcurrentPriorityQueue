@@ -1,14 +1,13 @@
-﻿using CSharpFunctionalExtensions;
-
-namespace ConcurrentPriorityQueue.Core
+﻿namespace ConcurrentPriorityQueue.Core
 {
-	public interface IPriorityQueue<T>
-	{
-		Result Enqueue(T item);
+    public interface IPriorityQueue<T>
+    {
         int Capacity { get; }
 
-		Result<T> Dequeue();
+        bool Enqueue(T item);
 
-		Result<T> Peek();
-	}
+        T Dequeue();
+
+        T Peek();
+    }
 }
